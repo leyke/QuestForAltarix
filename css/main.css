@@ -1,0 +1,35 @@
+body{
+    text-align: center;
+}
+.main-table{margin: 0 auto; width: 80%}
+div.db-table {
+    text-align: center;
+    width: 100%;
+    overflow: auto;
+    height: 700px;
+}
+div.db-table table{
+    width: 100%;
+}
+div.db-table table img{
+    width:20%;
+}
+
+.align-left{
+    text-align: left;
+}
+
+
+.response-Group-wrap,
+td.align-left {
+    margin-left: 50px;
+    padding: 1%;
+}
+td.align-left{
+    padding-left: 50px;
+}
+.response-Group-wrap{
+    border: 1px solid black;
+    height: 700px;
+    overflow: auto;
+}
