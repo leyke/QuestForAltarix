@@ -28,7 +28,7 @@ $lastCheck = (isset($lastCheck))? $lastCheck : null;
             $.ajax({
                 type: "POST",
                 url: "../WSDLRequestSenderController.php",
-                data: { dateS: s, dateE: e , Data: obj},
+                data: { dateS: s, dateE: e , Data: obj, action: "table"},
                 success: function(html){
                     $(".db-table-wrap").html(html);
                 }
@@ -60,7 +60,7 @@ $lastCheck = (isset($lastCheck))? $lastCheck : null;
                 <td>
                     <div class="db-table-wrap">
                         <?php
-                            render('table', array("data"=>$data,"curDate"=>$curDate));
+                            render('table', array("data"=>$data,"curDate"=>$curDate, "action" => "table", "filter" => ["dateS" => $curDate , "dateE" => $curDate]));
                         ?>
                     </div>
                 </td>

@@ -19,16 +19,9 @@ function render($view, $params = array())
     require('/views/' . $view . '.php');
 }
 
-function toDate ($str){
-    if (($timestamp = strtotime($str)) === false) {
-        echo ($str) . " недопустима";
-    } else {
-        $str = date('d.m.Y', $timestamp);
-    }
-    return $str;
-}
+$action = (isset($action))? $action: null;
+$action = (isset($_REQUEST['action']))? ($_REQUEST['action']): $action;
 
-$action = (isset($_REQUEST['action']))? ($_REQUEST['action']): null;
 switch ($action) {
     case "table":
         $filter= ([
