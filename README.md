@@ -7,4 +7,4 @@ Cron реализовал через средство "Планировщик з
 Время: */30 * * *
 Путь: %progdir%\modules\php\%phpdriver%\php-win.exe -c %progdir%\modules\php\%phpdriver%\php.ini -q -f %sitedir%\foraltarix.ru\WSDLRequestSenderController.php
 
-в Данный момент занимаюсь "причёсыванием" этого Проекта
+в Данный момент занимаюсь "причёсыванием" этого Проекта и добавлением обработки Header'ов
