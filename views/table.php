@@ -30,7 +30,7 @@ function toDate ($str){
 					foreach ($data as $row){
 						$date=toDate($row['request_time']);
 						if($date >= $filter['dateS'] and $date <= $filter['dateE']){
-							echo "<tr id='".  $row['response_id'] ."' class='row'>";
+							echo "<tr id='".  $row['response_id'] ."' class='row' onclick='responseGroup(this)'>";
 							echo	"<td>" . $row['request_time'] . "</td>";
 							echo	"<td>" . $row['ping'] . "</td>";
 							echo	"<td><img src='/img/checkStatus" . $row['check_result'] . ".png'></td>";

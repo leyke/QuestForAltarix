@@ -20,14 +20,14 @@ $lastCheck = (isset($lastCheck))? $lastCheck : null;
     <script src="../js/jquery-ui.min.js"></script>
     <script src="../js/main.js"></script>
     <script type="text/javascript">
-        function ajx(){
+        function getTable(){
             var s = document.getElementById('datepickerS').value;
             var e = document.getElementById('datepickerE').value;
             var obj = $('#DateGetter').html();
 
             $.ajax({
                 type: "POST",
-                url: "./views/table.php",
+                url: "../WSDLRequestSenderController.php",
                 data: { dateS: s, dateE: e , Data: obj},
                 success: function(html){
                     $(".db-table-wrap").html(html);
@@ -35,31 +35,40 @@ $lastCheck = (isset($lastCheck))? $lastCheck : null;
             });
             return false;
         }
-
+        function responseGroup(elem){
+            var id = elem.id;
+            $.ajax({
+                type: "POST",
+                url: "../WSDLRequestSenderController.php",
+                data: { elemId: id, action: "responseGroup"},
+                success: function(html){
+                    $(".response-Group-wrap").html(html);
+                }
+            });
+            return false;
+        }
     </script>
 </head>
     <body>
         <table class="main-table">
             <tr>
-                <td><p>Date Start: <input name="dateS" type="text" id="datepickerS" value="<?=$curDate?>" oninput="return ajx()"> <span>-----------</span> Date End: <input name="dateE" type="text" id="datepickerE" value="<?=$curDate?>" oninput="return ajx()"></p></td>
+                <td><p>Date Start: <input name="dateS" type="text" id="datepickerS" value="<?=$curDate?>" oninput="return getTable()"> <span>-----------</span> Date End: <input name="dateE" type="text" id="datepickerE" value="<?=$curDate?>" oninput="return getTable()"></p></td>
                 <td class="align-left">Last check:<?if ($lastCheck){?><a style="color:<?=($lastCheck['check_result'] == 0)?"Green":"Red"?>"><?=($lastCheck['check_result'] == 0)?"OK":"FAIL"?></a><?}else { echo "LAST CHECK ERROR";}?></td>
             </tr>
 
             <tr>
                 <td>
-                    <div hidden id="DateGetter"><?=serialize($data)?></div>
                     <div class="db-table-wrap">
                         <?php
                             render('table', array("data"=>$data,"curDate"=>$curDate));
                         ?>
                     </div>
                 </td>
-                <td style="vertical-align: top">
-                    <input hidden id="responseIdGetter" name="responseIdGetter" value="<?=$lastCheck['response_id']?>>
-                    <?php render('responseGroup', array("data"=>$WSDLRequestSender->select($_GET['responseIdGetter'])));?>
+                <td class="response-Group-wrap" style="vertical-align: top">
                 </td>
             </tr>
         </table>
+        <div hidden id="DateGetter"><?=serialize($data)?></div>
     </body>
 </html>
 
