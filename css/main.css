@@ -33,3 +33,7 @@ td.align-left{
     height: 700px;
     overflow: auto;
 }
+.db-table .row:hover{
+    background-color: rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+}

@@ -77,14 +77,5 @@ class DataBase
 		$sql = "INSERT INTO response_log_table(request_time, response_time, ping, check_result, fail_result_body) values ('{$request_time}','{$response_time}','{$ping}','{$check_result}','{$fail_result_body}')";
 		$this-> query($sql);
 	}
-	/**
-	 * Удаляет из БД по id_record  
-
-	public function deleteRecord($response_id)
-	{
-		$sql = "DELETE FROM response_log_table WHERE response_id =" . $response_id;
-		$this->query($sql);
-	}
-	 * */
 }
 
