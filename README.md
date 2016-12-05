@@ -1,4 +1,6 @@
 # QuestForAltarix
+Запрос к серверу редактируется в конструкторе класса classWSDLRequestSender.php
+
 В качестве локального сервера использовал Open Server 5.2.2
 
 Cron реализовал через средство "Планировщик заданий" в Open Server
